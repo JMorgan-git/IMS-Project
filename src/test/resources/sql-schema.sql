@@ -25,10 +25,10 @@ CREATE TABLE IF NOT EXISTS `items`(
 );
 
 CREATE TABLE IF NOT EXISTS `order_items`(
-	-- `id` INT NOT NULL AUTO_INCREMENT,
+	`id` INT NOT NULL AUTO_INCREMENT,
     `order_id` INT NOT NULL,
     `item_id` INT NOT NULL,
     FOREIGN KEY (`order_id`) REFERENCES `orders`(`id`),
     FOREIGN KEY (`item_id`) REFERENCES `items`(`id`)
-    -- PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`)
 );

@@ -64,26 +64,29 @@ public class OrderController implements CrudController<Order> {
 	// needs order + item loop to add as many as want...
 	public Order addItem(String newItem) {
 		if (newItem.toLowerCase().equals("yes")) {
-			boolean loop = true;
-			while (loop) {
+//			boolean loop = true;
+//			while (loop) {
 				LOGGER.info("Please Enter your order id: ");
 				Long orderId = utils.getLong();
 				LOGGER.info("Please Enter the item id you wish to add: ");
 				Long itemId = utils.getLong();
-				orderDAO.addItem(orderId, itemId);
-				LOGGER.info("Would you like to add more items?");
-				LOGGER.info("Enter T).Y or T).N");
-				String moreItems = utils.getString();
-				if (moreItems.toLowerCase().equals("no")) {
-					// Break out of the loop to stop adding items
-					loop = false;
-				}
-			}
-			return null;
+				Order item6 = orderDAO.addItem(orderId, itemId);
+				return item6;
+//				LOGGER.info("Would you like to add more items?");
+//				LOGGER.info("Enter T).Y or T).N");
+//				String moreItems = utils.getString();
+//				
+//				if (moreItems.toLowerCase().equals("no")) {
+//					// Break out of the loop to stop adding items
+//					loop = false;
+//				}
+//			}
+//			return null;
 		} else {
 			LOGGER.info("Returning to menu");
 			return null;
 		}
+		
 	}
 
 	/**

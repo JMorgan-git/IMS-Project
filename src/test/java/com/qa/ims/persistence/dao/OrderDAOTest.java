@@ -30,12 +30,6 @@ public class OrderDAOTest {
 	}
 
 	@Test
-	public void testAddItem() {
-		final Order created = new Order(2L, 1L);
-		assertEquals(created, DAO.addItem(2L,1L));
-	}
-
-	@Test
 	public void testReadAll() {
 		List<Order> expected = new ArrayList<>();
 		expected.add(new Order(1L, 1L));
@@ -45,19 +39,6 @@ public class OrderDAOTest {
 	@Test
 	public void testReadLatest() {
 		assertEquals(new Order(1L, 1L), DAO.readLatest());
-	}
-
-	@Test
-	public void testRead() {
-		final Long ID = 1L;
-		assertEquals(new Order(ID, 1L), DAO.read(ID));
-	}
-
-	@Test
-	public void testUpdate() {
-		final Order updated = new Order(1L, 1L);
-		assertEquals(updated, DAO.update(updated));
-
 	}
 
 	@Test

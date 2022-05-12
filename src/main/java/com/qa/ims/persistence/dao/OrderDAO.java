@@ -35,11 +35,15 @@ public class OrderDAO implements Dao<Order> {
 		return new Order(id, customerId /*,orderItems*/);
 	}
 
-//	public Order modelFromResultSetItems(ResultSet resultSet) throws SQLException {
-//		Long id = resultSet.getLong("order_id");
-//		List<Item> orderItems = new ArrayList<>();
-//		return new Order(id, orderItems);
-//	}
+	public Order modelFromResultSetItems(ResultSet resultSet) throws SQLException {
+		Long id = resultSet.getLong("order_id");
+		Long itemId = resultSet.getLong("item_id");
+		Item item3 = new Item();
+		item3 = itemDAO.read(itemId);
+		List<Item> orderItems = new ArrayList<>();
+		orderItems.add(item3);
+		return new Order(id, orderItems);
+	}
 
 	/**
 	 * Reads all items from the database
@@ -103,6 +107,7 @@ public class OrderDAO implements Dao<Order> {
 			statement.setLong(1, orderId);
 			statement.setLong(2, itemId);
 			statement.executeUpdate();
+			return readLateItems();
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
@@ -110,19 +115,19 @@ public class OrderDAO implements Dao<Order> {
 
 		return null;
 	}
-//
-//	public Order readLateItems() {
-//		try (Connection connection = DBUtils.getInstance().getConnection();
-//				Statement statement = connection.createStatement();
-//				ResultSet resultSet = statement.executeQuery("SELECT * FROM order_items");) {
-//			resultSet.next();
-//			return modelFromResultSetItems(resultSet);
-//		} catch (Exception e) {
-//			LOGGER.debug(e);
-//			LOGGER.error(e.getMessage());
-//		}
-//		return null;
-//	}
+
+	public Order readLateItems() {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM order_items ORDER BY id DESC LIMIT 1");) {
+			resultSet.next();
+			return modelFromResultSetItems(resultSet);
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
 //
 //	public Order readItems(Long orderId) {
 //		try (Connection connection = DBUtils.getInstance().getConnection();
