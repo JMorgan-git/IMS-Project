@@ -79,7 +79,7 @@ public class ItemDAO implements Dao<Item> {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
 		}
-		return null;
+		return item;
 	}
 
 	@Override
@@ -101,8 +101,8 @@ public class ItemDAO implements Dao<Item> {
 	/**
 	 * Updates a item in the database
 	 * 
-	 * @param item - takes in a item object, the id field will be used to
-	 *                 update that item in the database
+	 * @param item - takes in a item object, the id field will be used to update
+	 *             that item in the database
 	 * @return
 	 */
 	@Override
@@ -119,7 +119,7 @@ public class ItemDAO implements Dao<Item> {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
 		}
-		return null;
+		return item;
 	}
 
 	/**
