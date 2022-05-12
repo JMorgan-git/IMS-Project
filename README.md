@@ -1,68 +1,40 @@
-Coverage: 73.6%
-# Project Title
+Coverage: 72.9%
+# IMS Starter_project
 
-One Paragraph of project description goes here
+This application has the capacity to create,display,update and delete; customers, items and orders in a database table.
+Customers and the features that went with customers was already provided, I have added items and orders allong with the features that go with them.
+Due to some bugs i was unable to resolve, one feature was cut, being able to read the items attached to an order.
+Because of the feature being cut the current working version of the project involves being able to create, read, update and delete customers, items and orders. without the ablitiy to view items that were added to the orders.
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Controller Tests Mockito
 
-What things you need to install the software and how to install them
+The controller tests use mockito to send variables and values into each test, these values corospond with what would be user inputs if you were to run this application, for example;
+in the create method(this metod is used in all three controllers) the test gives the create method a first name and a second name, these values will be sent through the DAO version of said controller, expecting a return value that corrosponds with said values. meaning you send through F_Name "barry", L_Name "Scott", the test expects "barry","scott" to return.
 
-```
-Give examples
-```
+the other test methods react similarly;
+read method - the test expects to return the List you send in (Long, String, String)
 
-### Installing
+update method - the test expects to return the object(Long, String, String) 
 
-A step by step series of examples that tell you how to get a development env running
+delete method - expects nothing
 
-Say what the step will be
+### DAO Test Methods
+These tests act similarly to controller tests, however they connect to a mock SQL database and expects to return values retrieved from SQL
+these tests are the bulk of the applications functionality,
+the methods they test are essentially where all the connections to the database happens and where all the calculations are completed.
 
-```
-Give the example
-```
+in each method the test tests if there is a connection and returns the values retrieved from said connection.
+create returns the item you create
+read returns the items in the database
+update returns the item you updates
+delete returns 0
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system. Break down into which tests and what they do
-
-### Unit Tests 
-
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### Integration Tests 
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+### Domain Test Methods
+Since these classes are at the bottom, with purely getters, setters, tostrings and hashcodes inside them these tests are the most simple, it simply just makes sure it works, since there is nothing calculated or executed further than what it is. 
 
 ## Built With
 
@@ -76,6 +48,8 @@ We use [SemVer](http://semver.org/) for versioning.
 
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
 
+* **Jesse Morgan** - *Updated Version of the Initial work* - [jessemorgan](https://github.com/JMorgan-git/IMS-Project) 
+
 ## License
 
 This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details 
@@ -84,6 +58,5 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Some of the preexisting code from the first version of this app was used as framework and inspiration in a few places
+* Pawel Stypulkowski helped aim me in the right direction with a few fixes of errors
