@@ -48,6 +48,10 @@ We use [SemVer](http://semver.org/) for versioning.
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
 
 * **Jesse Morgan** - *Updated Version of the Initial work* - [jessemorgan](https://github.com/JMorgan-git/IMS-Project) 
+* 
+## Jira
+
+* https://jesse-morgan.atlassian.net/jira/software/projects/IMS/boards/1/backlog
 
 ## License
 
